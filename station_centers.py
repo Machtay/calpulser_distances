@@ -6,8 +6,9 @@ import numpy as np
 conn = sqlite3.connect('AntennaInfo.sqlite')
 
 # Step 2: Read the desired columns from your table into a DataFrame
-query = "SELECT antLocationX, antLocationY, antLocationZ FROM ARA05"
+query = "SELECT antLocationX, antLocationY, antLocationZ FROM ARA04"
 df = pd.read_sql_query(query, conn)
+df = df.head(16)
 
 # Close the database connection
 conn.close()
@@ -22,4 +23,4 @@ average_coordinate = np.sqrt(avg_column1**2 + avg_column2**2 + avg_column3**2)
 
 print("The average coordinate is:", average_coordinate)
 print("Average coordinate positions: ", avg_column1, ",", avg_column2, ",", avg_column3)
-
+print(df.tail())
